@@ -15,8 +15,12 @@ namespace Full_GRASP_And_SOLID
 
         public Product FinalProduct { get; set; }
 
-        public void AddStep(Step step)
+        /// En vez de recibir un Step como parametro al cual agregar recibe los datos necesarios para
+        /// crear el step que se quiere agregar desde el metodo mismo, cumpliendo asi con el patron
+        /// Creator ya que la clase que va a usar y necesita dichos step va a ser la que los cree.
+        public void AddStep(Product input, double quantity,Equipment equipment,int time)
         {
+            Step step = new Step(input,quantity,equipment,time);
             this.steps.Add(step);
         }
 
